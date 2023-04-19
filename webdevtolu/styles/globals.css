@@ -2,12 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Prompt:wght@400;500;600;700&display=swap");
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
   body {
     color: white;
-    background: black;
+    background: #1b1b1b;
   }
 }
