@@ -13,7 +13,8 @@ const Footer = () => {
           <div className="flex flex-col gap-6">
             <Image src="/images/logo.png" alt="Logo" width={48} height={48} />
             <p className="text-lg font-normal text-white leading-6 capitaliize">
-              I design and develop experiences that make people's lives simple
+              I design and develop experiences that make people&apos;s lives
+              simple
             </p>
             <Social />
           </div>
