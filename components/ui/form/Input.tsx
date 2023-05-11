@@ -1,52 +1,82 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface InputProps {
   type: "email" | "text";
   required?: boolean;
-  label: string;
+  label?: string;
   name: string;
   placeholder?: string;
-  onChange: (value: string, name: string) => void;
-  showLabel?: boolean;
-  style: "flat" | "round" | "pill";
+  style?: "flat" | "round" | "pill";
+  onChange: (value: string) => void
 }
 
-const Input = ({
+export const Input = ({
   type,
   label,
   name,
   placeholder,
   required,
-  onChange,
-  showLabel,
+  style,
+  onChange
 }: InputProps) => {
   const [isValid, setIsValid] = useState<boolean>(false);
   const [errorText, setErrorText] = useState<string>("");
+  // const [isInputEmpty, setIsInputEmpty] = useState<boolean>(true);
   const inputRef = useRef<HTMLInputElement>(null);
 
+    const roundedStyles: string = `${
+    style === "pill"
+      ? "rounded-full"
+      : style === "flat"
+      ? "rounded-none"
+      : style === "round"
+      ? "rounded-lg"
+      : "rounded"
+  }`;
+
+  // validate function to render error/help text
   const validateInput = (value: string): boolean => {
-    return false;
+    if (type === 'email') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      const isEmailValid = emailRegex.test(value)
+      setIsValid(isEmailValid)
+      setErrorText(isEmailValid ? '' : 'Please enter a valid email address')
+      return isEmailValid;
+    }
+     if (type === "text") {
+    const trimmedText = value.trim();
+    const isTextValid = trimmedText.length > 5;
+    setIsValid(isTextValid);
+    setErrorText(isTextValid ? "" : "Please enter at least 5 characters.");
+    return isTextValid;
+  }
+    return true;
   };
 
   const handleChange = () => {
-    const value = inputRef.current?.value || "";
-    const isInputValid = validateInput(value);
-    setIsValid(isInputValid);
-    onChange(value, name);
-  };
+    const value = inputRef.current?.value || ''
+    validateInput(value)
+    onChange(value)
+  }
 
+  // useEffect(() => {
+  //   setIsInputEmpty(inputRef.current?.value)
+  // }, [])
+
+  // TODO: style input form
   return (
     <div className="w-full flex flex-col gap-1 items-start">
       <div className="flex flex-col gap-2 items-start">
-        {showLabel && <label htmlFor={label}>{label}</label>}
+        {label && <label htmlFor={name}>{label}</label>}
         <input
           type={type}
-          id={label}
+          id={name}
           name={name}
           placeholder={placeholder}
           required={required}
-          ref={inputRef}
           onChange={handleChange}
+          ref={inputRef}
+          className={`${roundedStyles} text-black`}
         />
       </div>
       {!isValid && (
@@ -56,4 +86,3 @@ const Input = ({
   );
 };
 
-export default Input;

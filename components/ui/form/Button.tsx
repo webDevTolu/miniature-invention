@@ -13,7 +13,7 @@ interface ButtonProps {
   };
 }
 
-const Button = ({
+export const Button = ({
   type,
   style,
   onClick,
@@ -37,7 +37,7 @@ const Button = ({
       : color === "light"
       ? "bg-red-600 text-white hover:bg-red-700"
       : color === "dark"
-      ? "bg-portfolio-subtle text-white"
+      ? "bg-portfolio-main-subtle hover:bg-portfolio-main-primary text-white"
       : ""
   }`;
   const roundedStyles: string = `${
@@ -46,7 +46,7 @@ const Button = ({
       : style === "flat"
       ? "rounded-none"
       : style === "round"
-      ? "rounded-md"
+      ? "rounded-lg"
       : "rounded"
   }`;
 
@@ -73,4 +73,3 @@ const Button = ({
   );
 };
 
-export default Button;
