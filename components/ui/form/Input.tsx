@@ -19,7 +19,7 @@ export const Input = ({
   style,
   onChange
 }: InputProps) => {
-  const [isValid, setIsValid] = useState<boolean>(false);
+  const [isValid, setIsValid] = useState<boolean>(true);
   const [errorText, setErrorText] = useState<string>("");
   // const [isInputEmpty, setIsInputEmpty] = useState<boolean>(true);
   const inputRef = useRef<HTMLInputElement>(null);
