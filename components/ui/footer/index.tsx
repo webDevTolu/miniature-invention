@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="py-[30px] font-lato w-full bg-[#18181B]">
       <div className="flex flex-col items-center justify-center gap-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 justify-around w-5/6 mx-auto">
+        <div className="flex flex-col md:flex-row md:flex-wrap gap-16 justify-around w-5/6 mx-auto">
           <div className="flex flex-col gap-6">
             <Image src="/images/logo.png" alt="Logo" width={48} height={48} />
             <p className="text-lg font-normal text-white leading-6 capitaliize">

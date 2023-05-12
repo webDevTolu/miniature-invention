@@ -66,7 +66,7 @@ export const Input = ({
   // TODO: style input form
   return (
     <div className="w-full flex flex-col gap-1 items-start">
-      <div className="flex flex-col gap-2 items-start">
+      <div className="flex flex-col gap-2 items-start w-full">
         {label && <label htmlFor={name}>{label}</label>}
         <input
           type={type}
@@ -76,11 +76,11 @@ export const Input = ({
           required={required}
           onChange={handleChange}
           ref={inputRef}
-          className={`${roundedStyles} text-black`}
+          className={`${roundedStyles} placeholder:text-sm placeholder:text-sportfolio-white-text text-base text-portfolio-white-text bg-white border border-portfolio-main-subtle focus:outline-none focus:border-portfolio-main-primary focus:ring-1 focus:ring-portfolio-main-primary w-full`}
         />
       </div>
       {!isValid && (
-        <span className="text-sm font-semibold text-red-600">{errorText}</span>
+        <span className="text-xs font-bold text-red-500">{errorText}</span>
       )}
     </div>
   );

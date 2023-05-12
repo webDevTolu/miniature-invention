@@ -2,7 +2,7 @@ import {  FormEvent, useState } from "react";
 import { Button } from "../form/Button";
 import { Input } from "../form/Input";
 
-const Newsletter = (props) => {
+const Newsletter = () => {
   const [enteredEmail, setEnteredEmail] = useState<string>('')
 
   const handleEmailChange = (email: string) => {
@@ -14,9 +14,8 @@ const Newsletter = (props) => {
     console.log(`You've subscribed to our newsletter with this email: ${enteredEmail}`);
   };
 
-  // TODO: function to validate form and affect button disablity
   return (
-    <form onSubmit={handleSubscribe} className="flex gap-2 itens-center border h-full">
+    <form onSubmit={handleSubscribe} className="flex gap-2 itens-start h-full">
       <Input type="email" required name="subscribeEmail" placeholder="Enter your email" style="round" onChange={handleEmailChange} />
         <Button
           type="submit"

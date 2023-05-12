@@ -28,8 +28,8 @@ export const Button = ({
       : size === "large"
       ? "text-lg p-4"
       : size === "base"
-      ? "text-lg py-2.5 px-5"
-      : "text-lg py-2.5 px-5"
+      ? "text-base font-bold py-2 px-5 w-max h-max"
+      : "text-lg py-2 px-5"
   }`;
   const colorStyles: string = `${
     color === "primary"
