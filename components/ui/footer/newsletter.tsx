@@ -2,7 +2,7 @@ import {  FormEvent, useState } from "react";
 import { Button } from "../form/Button";
 import { Input } from "../form/Input";
 
-const Newsletter = () => {
+const Newsletter = (props) => {
   const [enteredEmail, setEnteredEmail] = useState<string>('')
 
   const handleEmailChange = (email: string) => {
